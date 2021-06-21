@@ -1,0 +1,21 @@
+
+    // Complete the flatlandSpaceStations function below.
+    static int flatlandSpaceStations(int n, int[] c) {
+ 
+    int pre_min,min;
+    ArrayList<Integer> al = new ArrayList<Integer>();
+    Arrays.sort(c);
+     
+       for(int i=0;i<n;i++){
+             pre_min=Integer.MAX_VALUE; 
+                
+            for(int j:c)
+            {    
+                min = Math.abs(i-j);
+                if(min>=pre_min)      break;
+                else                  pre_min = min;
+            }
+            al.add(pre_min);
+        }
+      return Collections.max(al);
+    }
