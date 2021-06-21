@@ -1,0 +1,28 @@
+   
+    public static int workbook(int n, int k, List<Integer> arr) {
+    // Write your code here
+    int page = 1,count=0,min=0,max=0;
+    
+       for(int i=0;i<arr.size();i++){       
+           n = arr.get(i);
+                    
+            for(int j=1;j<=n;j+=k){
+                
+               if(n >= j+k-1)
+               {
+                 min = j;
+                 max = j+k-1;
+               }
+               else
+               {
+                 min = j;
+                 max = n;
+               }
+             if(page>=min && page<=max)
+                     count++;
+             page++;               
+            }       
+        }
+       return count;
+       
+    }
