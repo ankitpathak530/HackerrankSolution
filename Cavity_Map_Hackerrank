@@ -1,0 +1,50 @@
+class Result {
+
+ 
+    public static List<String> cavityMap(List<String> grid) {
+        // Write your code here
+        
+        int m = grid.size() , n = grid.get(0).length();
+        String str="";
+        ArrayList<String> rs = new ArrayList<String>();
+        int ar[][] = new int[100][100];
+       
+       
+       
+       
+       //Initializing string list to  matrix-form to manipulate easily
+        for(int i = 0; i < m; i++){
+             str = grid.get(i);
+            for(int j = 0; j < n; j++){
+                ar[i][j] =  Integer.parseInt(Character.toString                                                           (str.charAt(j)));    
+            }
+        }
+        
+        
+        
+        
+        //Main logic to check pivot element
+        for(int i = 0; i < m; i++)
+        { 
+           str = "";
+           for(int j = 0; j < n; j++)
+            {
+              if(j==0 || j==n-1 || i==0 || i==n-1)   //if border element
+               {
+                    str += Integer.toString(ar[i][j]);
+               }
+              else if(ar[i][j]>ar[i][j-1] && ar[i][j]>ar[i][j+1]
+                && ar[i][j]>ar[i+1][j] && ar[i][j]>ar[i-1][j])
+               {
+                    str += "X";
+               }
+               else
+               {
+                   str += Integer.toString(ar[i][j]);
+               }  
+           }   
+           rs.add(str);        
+        }
+     return rs;       
+    }
+}
