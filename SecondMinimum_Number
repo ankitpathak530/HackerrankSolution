@@ -1,0 +1,20 @@
+package selfProgram;
+import java.util.Arrays;
+
+public class SecondMinimumInArray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int ar[] =  {5,67,3,1,6};
+		Arrays.sort(ar);
+		
+		int index=0;
+		while(ar[0]==ar[index])
+			 index++;
+	
+		System.out.println("Second smallest Number is :-"+ar[index]);
+		
+	}
+
+}
