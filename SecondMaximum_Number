@@ -1,0 +1,23 @@
+package selfProgram;
+
+import java.util.Arrays;
+
+public class SecondLargestNumber {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int ar[] =  {5,67,3,1,6,44,67};
+		Arrays.sort(ar);
+		
+		int index = ar.length-1;
+		while(ar[ar.length-1]==ar[index])
+			index--;
+		
+		System.out.println("Second Largest number is :"+ar[index]);
+		
+		char ch = 'h';
+	
+	}
+
+}
