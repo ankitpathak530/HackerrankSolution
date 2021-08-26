@@ -1,39 +1,23 @@
- public static List<Integer> closestNumbers(List<Integer> arr) {
-  
-        //SORTING ARRAY
+public static List<Integer> closestNumbers(List<Integer> arr) {
+    // Write your code here
         Collections.sort(arr);
         int l = arr.size();
         
         int temp = Integer.MAX_VALUE;
-        int count = 0;
         for (int i = 1; i < l; i++) {
             int x = arr.get(i) - arr.get(i-1);
             if(x <= temp) {
                 temp = x;
             }
         }
-        int index = 0;
-        //Find array size
-        for (int i = 1; i < l; i++) {
-            int x = arr.get(i) - arr.get(i-1);
-            if (x == temp) {
-                count+=2;
-            } 
-        }
-        
         //storing result
         List<Integer> result = new ArrayList<Integer>();
         for (int i = 1; i < l; i++) {
             int x = arr.get(i) - arr.get(i-1);
             if (x == temp) {
                 result.add(arr.get(i-1));
-                index+=1;
                 result.add(arr.get(i));
-                index+=1;
             } 
         } 
     return result;
-           
-           
-           
-        }
+  }
