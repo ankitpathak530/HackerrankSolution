@@ -1,0 +1,37 @@
+ public static String happyLadybugs(String b) {
+        
+       int ar[] = new int[26];
+       int count=0;
+
+       for(char ch:b.toCharArray())
+       {
+         if(ch=='_')  
+             count++;  
+         else
+             ar[(int)ch-'A']++;
+       }
+       
+    
+       for(int i:ar)
+          if(i == 1)  
+             return "NO";
+             
+       
+        if(count == 0)
+          {
+              int i=0;
+              for( i=0; i<b.length()-1; i++){
+                  char ch = b.charAt(i);
+                  boolean flag = true;
+                  for(int j=i+1;j<b.length(); j++){
+                      if(b.charAt(j) != ch)
+                         flag = false;
+                      if(b.charAt(j) == ch && flag==false)
+                         return "NO";
+                  }
+              }
+              if(b.charAt(i) != b.charAt(i-1))
+                 return "NO";
+          }  
+        return "YES";
+     }
