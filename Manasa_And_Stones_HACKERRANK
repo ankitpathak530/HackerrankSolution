@@ -1,0 +1,16 @@
+class Result {
+
+    public static List<Integer> stones(int n, int a, int b) {
+
+        ArrayList<Integer> finalStones = new ArrayList<Integer>();
+
+        for(int i = 0; i < n; i++){
+            int sum = (i * a) + ((n-1-i)*b);
+            if(finalStones.indexOf(sum) != 0)   // This line will not store duplicate in arraylist
+                 finalStones.add(sum);
+        }
+        Collections.sort(finalStones);       // sorting arraylist in ascending order
+      
+       return finalStones;
+    }
+}
