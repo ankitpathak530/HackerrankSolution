@@ -1,0 +1,90 @@
+
+    
+    public static List<Integer> waiter(List<Integer> number, int q) {
+              // Write your code here
+    
+           int size = number.size();
+           
+           List<Integer> allPrime = getAllPrime(size); //all prime
+           List<Integer> answer = new ArrayList<Integer>();
+            
+           System.out.println(allPrime);
+          
+          for(int k = 0; k < q; k++){
+              
+              Stack<Integer> A1 = new Stack<Integer>();
+              Stack<Integer> B1 = new Stack<Integer>();
+             
+              int nextPrime = allPrime.get(k);
+              //need to increment
+              
+              for(int i = number.size()-1; i >= 0; i--){
+                 
+                  int v = number.get(i);
+                  
+                  if((v != 0) && (v % nextPrime == 0)){
+                      B1.push(v);
+                      number.set(i,0);
+                  }
+                  if((v != 0) && (v % nextPrime != 0)){
+                      A1.push(v);
+
+                    }
+              }
+            number = new ArrayList<Integer>();
+            while(!A1.isEmpty())
+                number.add(A1.pop());
+            Collections.reverse(number);
+            
+            //move b1 element to answer
+            while(!B1.isEmpty()){
+                answer.add(B1.pop());
+            }  
+              
+        //iteration complete              
+     }
+     
+     //final if element are left 
+     for(int i = number.size()-1; i >= 0; i--){
+         if(number.get(i) != 0)
+             answer.add(number.get(i));
+     }
+    return answer; 
+     
+
+
+
+    }
+    public static List<Integer> getAllPrime(int size){
+          int j = 2,count = 1;
+          
+          List<Integer> allPrime = new ArrayList<Integer>();
+          
+            while(true){
+                  if(isPrime(j)){
+                     allPrime.add(j);
+                     count++;
+                    }
+                   if(count == size+1)
+                       break;  
+                   j++;                 
+              }
+          return allPrime;
+    }  
+    public static boolean isPrime(int n){
+        
+        if(n == 1)
+           return false;  
+        if(n == 2 || n == 3)
+           return true;
+        if(n%2==0 || n%3==0)
+           return false;
+ 
+        for(int i=5; i*i<=n; i+=6)
+           if(n%i==0 || n%(i+2)==0)
+               return false;  
+                    
+        return true;
+    }  
+
+}
