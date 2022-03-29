@@ -7,6 +7,28 @@ public class ArrayLeftRotation {
     {
 	  rotLeft(new int[]{1,2,3,4,5,},14);
     }
+
+	//1st Approach by rotating array one time to left
+       static List<Integer> rotateLeft(int d, List<Integer> arr) 
+       {
+	     List<Integer> result = new ArrayList<>();
+	     int n = arr.size();
+
+		  if(d > n)
+		     d = d % n;
+
+		  int k = d;
+		  do{ 
+		      if(k == n)
+			  k = 0;
+
+		       result.add(arr.get(k++));       
+		  }while(k != d);
+
+ 	       return result;
+       }
+	
+	//2nd Approach by converting number to String -  NOTE:- It may not work for two digit array data
 	static void rotLeft(int[] a, int d) {
 		
 		if(d%a.length==0)
