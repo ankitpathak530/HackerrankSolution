@@ -1,27 +1,36 @@
-public class SingletonClass implements Serializable {
+package DesignPattern.SingletonPattern;
 
+import java.io.Serializable;
+
+
+//Singleton class
+public class SingletonClass implements Serializable {
+   
+	//Volatile keyword make sure that object will be published only when it is fully initialized
     private static volatile SingletonClass sSoleInstance;
 
     //private constructor.
     private SingletonClass(){
 
-        //Prevent form the reflection api.
+        //Prevent from the breaking the rule using reflection API.
         if (sSoleInstance != null){
             throw new RuntimeException("Use getInstance() method to get the single instance of this class.");
         }
     }
 
+    
     public static SingletonClass getInstance() {
         if (sSoleInstance == null) { //if there is no instance available... create new one
             synchronized (SingletonClass.class) {
-                if (sSoleInstance == null) sSoleInstance = new SingletonClass();
+                if (sSoleInstance == null)  //Double checked locking is used to avoid locking overhead.
+                	sSoleInstance = new SingletonClass();
             }
         }
 
         return sSoleInstance;
     }
 
-    //Make singleton from serialize and deserialize operation.
+    //Make singleton from Serialization and DSerialization operation.
     protected SingletonClass readResolve() {
         return getInstance();
     }
