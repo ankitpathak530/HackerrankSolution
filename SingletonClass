@@ -35,3 +35,12 @@ public class SingletonClass implements Serializable {
         return getInstance();
     }
 }
+
+/*
+Trying to Breach The Singleton Class
+1st:-Using Reflextion
+                Class clazz = Class.forName("com.groot.model.phone.SmartPhone");
+		Constructor<SmartPhone> ctr = clazz.getDeclaredConstructor();
+		ctr.setAccessible(true);
+		SmartPhone smartPhone4 = ctr.newInstance();
+*/		
